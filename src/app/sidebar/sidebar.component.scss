@@ -1,0 +1,41 @@
+$breakpoint-phone: 481px;
+$breakpoint-tablet: 769px;
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  background-color: white;
+  height: 100vh;
+  width: 4rem;
+
+  a {
+    color: inherit; /* Remove default link color */
+    text-decoration: none; /* Remove underline */
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+  }
+
+  i {
+    font-size: 2rem;   
+  }
+  .bi-arrow-right{
+    position: fixed;
+    bottom: 0;
+}
+  .active {
+    background-color: #f4f3f4 !important;
+    color: #478efc !important;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: #{$breakpoint-phone}) {
+  .sidebar {
+    display: none !important;
+    background-color: red !important;
+  }
+}

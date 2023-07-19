@@ -1,0 +1,71 @@
+// *{
+//     border: black 1px solid;
+// }
+
+$breakpoint-phone: 481px;
+$breakpoint-tablet: 769px;
+
+
+.hero-container {
+  width: 100%;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: #b7cdfd 0px 5px 30px -10px;
+  .table-container {
+    overflow: auto;
+    max-height: 60vh;
+  }
+
+  .btn-primary-theme {
+    background-color: #478efc;
+    color: #f4f3f4;
+  }
+
+  th {
+    font-weight: 900;
+  }
+
+  .bi-chevron-up,
+  .bi-chevron-down {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  td {
+    span {
+      width: 50vw !important;
+      height: 100%;
+    }
+  }
+
+  .campaign-name {
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  .border-round {
+    border-radius: 0.7rem;
+  }
+
+  .green-badge {
+    background-color: #bdeacd;
+  }
+  .blue-badge {
+    background-color: #b7cdfd;
+  }
+  .grey-badge {
+    background-color: #d4d2d4;
+  }
+}
+
+@media (max-width: #{$breakpoint-phone}) {
+  th {
+    font-size: 0.8rem;
+  }
+  td {
+    font-size: 0.7rem;
+  }
+}
