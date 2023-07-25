@@ -18,15 +18,10 @@
     "@angular/platform-browser": "^16.1.5",
     "@angular/platform-browser-dynamic": "^16.1.5",
     "@angular/router": "^16.1.5",
-<<<<<<< HEAD
-    "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
-=======
     "@ng-bootstrap/ng-bootstrap": "^15.1.0",
     "bootstrap": "^5.3.0",
     "bootstrap-icons": "^1.10.5",
     "rxjs": "~7.5.0",
->>>>>>> 671cd6f (updted)
     "zone.js": "~0.13.1"
   },
   "devDependencies": {
@@ -40,13 +35,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
-<<<<<<< HEAD
-    "typescript": "~5.1.6"
-  }
-}
-=======
     "tslib": "^2.6.0",
     "typescript": "~5.1.6"
   }
 }
->>>>>>> 671cd6f (updted)

@@ -20,21 +20,6 @@
             "outputPath": "dist/campaign-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
-<<<<<<< HEAD
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
-=======
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -47,7 +32,6 @@
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
 
             ]
->>>>>>> 671cd6f (updted)
           },
           "configurations": {
             "production": {
@@ -97,22 +81,6 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-<<<<<<< HEAD
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
-=======
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
@@ -125,7 +93,6 @@
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
->>>>>>> 671cd6f (updted)
           }
         }
       }
