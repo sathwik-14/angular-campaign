@@ -5,13 +5,6 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CampaignInfoComponent } from './campaign/campaign-info/campaign-info.component';
 import { CampaignComponent } from './campaign/campaign.component';
-<<<<<<< HEAD
-@NgModule({
-  declarations: [AppComponent,
-    CampaignComponent,
-     SidebarComponent, CampaignInfoComponent],
-  imports: [BrowserModule, AppRoutingModule],
-=======
 import { ReactiveFormsModule } from '@angular/forms';
 import { CampaignFormComponent } from './campaign/campaign-form/campaign-form.component';
 
@@ -20,7 +13,6 @@ import { CampaignFormComponent } from './campaign/campaign-form/campaign-form.co
     CampaignComponent,
      SidebarComponent, CampaignInfoComponent, CampaignFormComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
->>>>>>> 671cd6f (updted)
   providers: [],
   bootstrap: [AppComponent],
 })
