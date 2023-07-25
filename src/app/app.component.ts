@@ -7,12 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'campaign-angular';
-<<<<<<< HEAD
-  
-
-  
-  
-=======
-
->>>>>>> 671cd6f (updted)
 }

@@ -5,8 +5,6 @@
 $breakpoint-phone: 481px;
 $breakpoint-tablet: 769px;
 
-<<<<<<< HEAD
-=======
 .hover{
   &:hover{
     cursor: pointer;
@@ -28,17 +26,12 @@ $breakpoint-tablet: 769px;
     font-size: 1rem;
   }
 }
->>>>>>> 671cd6f (updted)
 
 .hero-container {
   width: 100%;
   background-color: white;
   border-radius: 1rem;
   box-shadow: #b7cdfd 0px 5px 30px -10px;
-<<<<<<< HEAD
-=======
-
->>>>>>> 671cd6f (updted)
   .table-container {
     overflow: auto;
     max-height: 60vh;
@@ -58,8 +51,6 @@ $breakpoint-tablet: 769px;
     color: #f4f3f4;
   }
 
-<<<<<<< HEAD
-=======
   .btn-secondary-theme {
     background-color: #c5c3c5;
     color: black;
@@ -70,7 +61,6 @@ $breakpoint-tablet: 769px;
     color: #478efc;
   }
 
->>>>>>> 671cd6f (updted)
   th {
     font-weight: 900;
   }
@@ -93,11 +83,6 @@ $breakpoint-tablet: 769px;
     width: 5vw;
   }
 
-<<<<<<< HEAD
- 
-
-=======
->>>>>>> 671cd6f (updted)
   .campaign-name {
     &:hover {
       cursor: pointer;
@@ -118,11 +103,6 @@ $breakpoint-tablet: 769px;
   .grey-badge {
     background-color: #d4d2d4;
   }
-<<<<<<< HEAD
-}
-
-@media (max-width: #{$breakpoint-phone}) {
-=======
   
 }
 
@@ -135,7 +115,6 @@ $breakpoint-tablet: 769px;
       font-size: .8rem;
     }
   }
->>>>>>> 671cd6f (updted)
   th {
     font-size: 0.8rem;
   }
