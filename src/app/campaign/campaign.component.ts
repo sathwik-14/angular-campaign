@@ -1,10 +1,17 @@
+<<<<<<< HEAD
 import { Component } from '@angular/core';
 import { CampaignInterface } from './types/campaign.interface'
+=======
+import { Component, OnInit } from '@angular/core';
+import { CampaignInterface } from './types/campaign.interface'
+import { SharedDataService } from '../data.service';
+>>>>>>> 671cd6f (updted)
 @Component({
   selector: 'app-campaign',
   templateUrl: './campaign.component.html',
   styleUrls: ['./campaign.component.scss']
 })
+<<<<<<< HEAD
 export class CampaignComponent {
   ascOrder = true;
   campaignData: CampaignInterface[] =[
@@ -48,19 +55,46 @@ export class CampaignComponent {
 
   
   
+=======
+export class CampaignComponent implements OnInit {
+
+  constructor(private dataService: SharedDataService) { }
+  campaignData: CampaignInterface[] = [];
+
+  ngOnInit(): void {
+    this.campaignData = this.dataService.getData();
+  }
+  showForm:boolean = false;
+  ascOrder = true;
+  
+  toggleForm(){
+    this.showForm = !this.showForm
+  }
+
+>>>>>>> 671cd6f (updted)
 
   sortDate(){
     if(this.ascOrder){
       this.campaignData=this.campaignData.sort((a:CampaignInterface, b:CampaignInterface) =>{
+<<<<<<< HEAD
         const date1=new Date(a['Start Date']).getTime()
         const date2=new Date(b['Start Date']).getTime()
+=======
+        const date1=new Date(a["start date"]).getTime()
+        const date2=new Date(b["start date"]).getTime()
+>>>>>>> 671cd6f (updted)
         return date2 - date1
       })
     }
     else{
       this.campaignData=this.campaignData.sort((a:CampaignInterface, b:CampaignInterface) =>{
+<<<<<<< HEAD
         const date1=new Date(a['Start Date']).getTime()
         const date2=new Date(b['Start Date']).getTime()
+=======
+        const date1=new Date(a["start date"]).getTime()
+        const date2=new Date(b["start date"]).getTime()
+>>>>>>> 671cd6f (updted)
         return date1 - date2
       
       })

@@ -5,12 +5,40 @@
 $breakpoint-phone: 481px;
 $breakpoint-tablet: 769px;
 
+<<<<<<< HEAD
+=======
+.hover{
+  &:hover{
+    cursor: pointer;
+    color: #478efc !important;
+  }
+}
+
+.filler{
+  height: .2vh;
+  background-color: rgb(182, 182, 182);
+  width: 8%;
+}
+
+.form-container{
+  width: 100%;
+  background-color: #f4f3f4;
+  border-radius: 1rem;
+  label {
+    font-size: 1rem;
+  }
+}
+>>>>>>> 671cd6f (updted)
 
 .hero-container {
   width: 100%;
   background-color: white;
   border-radius: 1rem;
   box-shadow: #b7cdfd 0px 5px 30px -10px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 671cd6f (updted)
   .table-container {
     overflow: auto;
     max-height: 60vh;
@@ -30,6 +58,19 @@ $breakpoint-tablet: 769px;
     color: #f4f3f4;
   }
 
+<<<<<<< HEAD
+=======
+  .btn-secondary-theme {
+    background-color: #c5c3c5;
+    color: black;
+  }
+
+  .btn-outline-primary-theme {
+    border: #478efc .1px solid;
+    color: #478efc;
+  }
+
+>>>>>>> 671cd6f (updted)
   th {
     font-weight: 900;
   }
@@ -52,8 +93,11 @@ $breakpoint-tablet: 769px;
     width: 5vw;
   }
 
+<<<<<<< HEAD
  
 
+=======
+>>>>>>> 671cd6f (updted)
   .campaign-name {
     &:hover {
       cursor: pointer;
@@ -74,9 +118,24 @@ $breakpoint-tablet: 769px;
   .grey-badge {
     background-color: #d4d2d4;
   }
+<<<<<<< HEAD
 }
 
 @media (max-width: #{$breakpoint-phone}) {
+=======
+  
+}
+
+@media (max-width: #{$breakpoint-phone}) {
+  .form-container{
+    width: 100%;
+    background-color: #f4f3f4;
+    border-radius: 1rem;
+    label {
+      font-size: .8rem;
+    }
+  }
+>>>>>>> 671cd6f (updted)
   th {
     font-size: 0.8rem;
   }

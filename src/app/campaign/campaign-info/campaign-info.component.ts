@@ -19,7 +19,11 @@ export class CampaignInfoComponent implements OnInit {
 
     this.itemId = this.route.snapshot.paramMap.get('id')!;
     this.campaigns = this.sharedDataService.getData();
+<<<<<<< HEAD
      this.foundObject = this.campaigns.find((obj) => obj['Program ID'] === this.itemId)!;
+=======
+     this.foundObject = this.campaigns.find((obj) => obj['id'] === this.itemId)!;
+>>>>>>> 671cd6f (updted)
 
   }
 }

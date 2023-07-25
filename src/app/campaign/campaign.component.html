@@ -1,13 +1,22 @@
+<<<<<<< HEAD
 <div class="container my-5">
+=======
+<div class="container my-2 my-lg-4">
+>>>>>>> 671cd6f (updted)
   <div class="header d-flex justify-content-between">
     <p class="header-title h1">Manage Campaigns</p>
     <div class="dropdown">
       <button
+<<<<<<< HEAD
         class="btn btn-outline-secondary dropdown-toggle"
+=======
+        class="btn btn-outline-secondary "
+>>>>>>> 671cd6f (updted)
         type="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
+<<<<<<< HEAD
         abcd efgh
       </button>
       <ul class="dropdown-menu">
@@ -96,3 +105,114 @@
   </div>
   
 </div>
+=======
+        Abcd Efgh
+      </button>
+    </div>
+  </div>
+  <div class="list-campaign" *ngIf="!showForm">
+    <div class="fs-7 text-muted">Manage Campaign</div>
+
+    <div class="hero-container p-4  mt-2">
+      <div class="btn btn-primary-theme my-3" (click)="toggleForm()">
+        Create Campaign
+      </div>
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Program ID</th>
+              <th scope="col">Campaign Name</th>
+              <th scope="col">Status</th>
+              <th scope="col">CTR</th>
+              <th scope="col">
+                Start Date &nbsp;
+                <i
+                  class="bi bi-chevron-up"
+                  (click)="sortDate()"
+                  *ngIf="ascOrder"
+                ></i>
+                <i
+                  class="bi bi-chevron-down"
+                  (click)="sortDate()"
+                  *ngIf="!ascOrder"
+                ></i>
+              </th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of campaignData">
+              <td class="">{{ data["id"] }}</td>
+              <td class="" class="campaign-name">
+                <a [routerLink]="['/campaign', data['id']]">
+                  {{ data["name"] }}
+                </a>
+              </td>
+              <td class="block" *ngIf="data['status'] == 'Scheduled'">
+                <span class="blue-badge border-round text-center p-1">{{
+                  data["status"]
+                }}</span>
+              </td>
+              <td class="block" *ngIf="data['status'] == 'Completed'">
+                <span class="green-badge border-round text-center p-1">{{
+                  data["status"]
+                }}</span>
+              </td>
+              <td class="block" *ngIf="data['status'] == 'Draft'">
+                <span class="grey-badge border-round text-center p-1">{{
+                  data["status"]
+                }}</span>
+              </td>
+
+              <td class="">{{ data["ctr"] }}%</td>
+              <td class="">
+                {{ data["start date"] | date : "dd MMMM (yyyy)" }}
+              </td>
+              <td>
+                <div class="dropdown">
+                  <button
+                    class="btn btn-sm btn-outline-secondary dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Action
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">Another action</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="list-campaign" *ngIf="showForm">
+    <div class="">
+      <span class="fs-7 text-muted hover" (click)="toggleForm()"
+        >Manage Campaign</span
+      >&nbsp;>&nbsp;
+      <span class="fs-7 text-muted">New Campaign</span>
+    </div>
+
+    <div class="hero-container p-2 p-lg-4 mt-2 mt-lg-4">
+      <app-campaign-form>
+
+      </app-campaign-form>
+    </div>
+
+
+    </div>
+  </div>
+
+>>>>>>> 671cd6f (updted)
