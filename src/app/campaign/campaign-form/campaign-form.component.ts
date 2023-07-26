@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component,Input,Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SharedDataService } from 'src/app/data.service';
-import { CampaignInterface } from '../types/campaign.interface';
+
 @Component({
   selector: 'app-campaign-form',
   templateUrl: './campaign-form.component.html',
@@ -9,17 +9,19 @@ import { CampaignInterface } from '../types/campaign.interface';
 })
 export class CampaignFormComponent {
   constructor(private dataservice: SharedDataService){}
+  @Input() showForm!:boolean
+  @Output() toggleForm = new EventEmitter<boolean>();
   newCampaign:{} = {}
   category:boolean = false
   location = new FormControl()
   name = new FormControl('')
   objective = new FormControl('')
-  categorySelect = new FormControl('undefined')
-  offerSelect = new FormControl('undefined')
+  categorySelect = new FormControl('select')
+  offerSelect = new FormControl('select')
   comments = new FormControl('')
   categories = ['first', 'second', 'third']
   locations: String[] = []
-
+  edit : boolean = false
   showFirstPage:boolean = true;
   showSecondPage:boolean = false;
   showThirdPage: boolean = false;
@@ -43,9 +45,27 @@ export class CampaignFormComponent {
     this.browse = !this.browse
   }
 
+  nameAlert:boolean = false;
+
+  objectiveAlert:boolean = false;
+
+
+
   secondPage(){
-    this.toggleFirstPage()
-    this.toggleSecondPage()
+    if(this.name.value == '')
+      this.nameAlert = true;
+    else if(this.objective.value == ''){
+      if(this.nameAlert){
+        this.nameAlert = false;
+      }
+      this.objectiveAlert = true;
+      }
+    else{
+      if(this.objectiveAlert)
+      this.objectiveAlert = false;
+      this.toggleFirstPage()
+      this.toggleSecondPage()
+    } 
   }
 
   thirdPage(){
@@ -66,6 +86,16 @@ export class CampaignFormComponent {
   toggleApplication() {
     this.toggleCategory()
     this.application = true
+  }
+
+  editableIndex: number | null = null;
+
+  toggleEditable(index: number | null ): void {
+    this.editableIndex = this.editableIndex === index ? null : index;
+  }
+
+  isEditable(index: number): boolean {
+    return this.editableIndex === index;
   }
 
 
@@ -92,15 +122,29 @@ export class CampaignFormComponent {
     this.locations.splice(i,1)
   }
 
+  submitted:boolean = false
+
   submitForm() {
-    this.newCampaign = {
-      'name': this.name.value,
-      'objective': this.objective.value,
-      'comment': this.comments.value,
-      'category': this.categorySelect.value,
-      'offer': this.offerSelect.value,
-      'location': this.locations,
+    this.submitted = true;
+    setTimeout(() => {
+    if(this.name.value == '')
+    alert('Please enter a name')
+    else if (this.objective.value == '')
+    alert('Please enter objective')
+    else{
+      this.newCampaign = {
+        'name': this.name.value,
+        'objective': this.objective.value,
+        'comment': this.comments.value,
+        'category': this.categorySelect.value,
+        'offer': this.offerSelect.value,
+        'location': this.locations,
+      }
+      this.dataservice.addData(this.newCampaign)
+      this.submitted = false
+      this.showForm = false
+      this.toggleForm.emit(this.showForm)
     }
-    this.dataservice.addData(this.newCampaign)
+  },1000)
   }
 }

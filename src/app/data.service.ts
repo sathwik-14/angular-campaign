@@ -2,11 +2,13 @@
 
 import { Injectable } from '@angular/core';
 import { CampaignInterface } from './campaign/types/campaign.interface';
+
 @Injectable({
   providedIn: 'root'
 })
 export class SharedDataService {
-  sharedData: any; // Define the shared data property
+
+  
   campaignData: CampaignInterface[] =[
     {
       "id": "P001",
@@ -39,6 +41,7 @@ export class SharedDataService {
     {
       "id": "P005",
       "name": "Spring Promotion",
+      "location": ['sullia','puttur'],
       "status": "Scheduled",
       "ctr": 1.9,
       "start date": "2023-07-10"
@@ -61,8 +64,12 @@ export class SharedDataService {
     newItem.id = newid
     newItem.status = "Draft";
     newItem['start date'] = Date.now();
-    newItem.ctr = 2.3;
+    newItem.ctr = 0;
     this.campaignData.push(newItem);
   }
 
+  deleteData(id:any):void {
+    let arrayItem = this.campaignData.findIndex(c => c.id === id)
+    this.campaignData.splice(arrayItem,1)
+  }
 }

@@ -1,18 +1,46 @@
+<div class="container">
 <div class="hero-container container p-3">
-    <p class="text-center h1">Campaign Details</p>
-  <p class="fs-4">
-    <span class="h3">Id:&nbsp;</span> {{ foundObject["id"] }}
+    <p class="text-center h4 ">Campaign Details</p>
+    <div class="p-5">
+  <p class="fs-7 d-flex justify-content-between">
+    <span class="h6">Id:&nbsp;</span> {{ foundObject["id"]?foundObject['id']:'NA' }}
   </p>
-  <p class="fs-4">
-    <span class="h3">Name:&nbsp;</span> {{ foundObject["name"] }}
+  <p class="fs-7 d-flex justify-content-between">
+    <span class="h6">Name:&nbsp;</span> {{ foundObject["name"]?foundObject['name']:'NA' }}
   </p>
-  <p class="fs-4">
-    <span class="h3">Status:&nbsp;</span> {{ foundObject["status"] }}
+  <p class="fs-7 d-flex justify-content-between">
+    <span class="h6">Objective:&nbsp;</span> {{ foundObject["objective"]?foundObject['objective']:'NA' }}
   </p>
-  <p class="fs-4">
-    <span class="h3">CTR:&nbsp;</span> {{ foundObject["ctr"] }} %
+  <p class="fs-7 d-flex justify-content-between">
+    <span class="h6">Category Type:&nbsp;</span> {{ foundObject["category"]?foundObject['category']:'NA' }}
   </p>
-  <p class="fs-4">
-    <span class="h3">Start Date:&nbsp;</span> {{ foundObject["start date"] }}
+  <p class="fs-7 d-flex justify-content-between">
+    <span class="h6">Offer Type:&nbsp;</span> {{ foundObject["offer"]?foundObject['offer']:'NA' }}
   </p>
+  <p class="fs-7 d-flex justify-content-between">
+    <span class="h6">Locations:&nbsp;</span>
+    <span *ngIf="!foundObject['location']">NA</span>
+    <ng-container  >
+      {{ foundObject['location'] }}
+    </ng-container>
+  
+  </p>
+  <p class="fs-7 d-flex justify-content-between">
+    <span class="h6">Status:&nbsp;</span> {{ foundObject["status"]?foundObject['status']:'NA' }}
+  </p>
+  <p class="fs-7 d-flex justify-content-between">
+    <span class="h6">CTR:&nbsp;</span> {{ foundObject["ctr"]?foundObject['ctr']:'NA' }} %
+  </p>
+  <p class="fs-7 d-flex justify-content-between">
+    <span class="h6">Start Date:&nbsp;</span> {{ foundObject['start date'] ? (foundObject['start date'] | date : "yyyy-MM-dd") :'NA' }}
+  </p>
+</div>
+  <div class="text-center mb-3">
+    <div class="btn  btn-outline-danger" (click)="deleteData()">Delete Campaign &nbsp;<i class="bi bi-trash"></i></div>
+  </div>
+  <div class="text-center">
+    <div class="btn btn-transparent" (click)="goBack()"><i class="bi bi-chevron-left"></i> &nbsp;Back </div>
+
+  </div>
+</div>
 </div>

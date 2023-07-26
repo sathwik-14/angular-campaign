@@ -3,6 +3,8 @@ import { OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SharedDataService } from 'src/app/data.service';
 import { CampaignInterface  } from '../types/campaign.interface';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-campaign-info',
@@ -12,7 +14,7 @@ import { CampaignInterface  } from '../types/campaign.interface';
 export class CampaignInfoComponent implements OnInit {
   itemId!: string;
   campaigns!: CampaignInterface[];
-  constructor(private sharedDataService: SharedDataService,private route: ActivatedRoute) { }
+  constructor(private sharedDataService: SharedDataService,private route: ActivatedRoute,private router: Router) { }
   foundObject!: any;
 
   ngOnInit() {
@@ -21,5 +23,14 @@ export class CampaignInfoComponent implements OnInit {
     this.campaigns = this.sharedDataService.getData();
      this.foundObject = this.campaigns.find((obj) => obj['id'] === this.itemId)!;
 
+  }
+
+  deleteData() {
+    this.sharedDataService.deleteData(this.itemId);
+    this.router.navigate(['/campaign']);
+  }
+
+  goBack() {
+    this.router.navigate(['/campaign'])
   }
 }

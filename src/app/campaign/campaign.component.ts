@@ -13,12 +13,15 @@ export class CampaignComponent implements OnInit {
 
   ngOnInit(): void {
     this.campaignData = this.dataService.getData();
+    this.ascOrder = true
+    this.sortDate()
   }
   showForm:boolean = false;
   ascOrder = true;
   
   toggleForm(){
     this.showForm = !this.showForm
+    this.sortDate()
   }
 
 
