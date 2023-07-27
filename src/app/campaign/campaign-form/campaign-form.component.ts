@@ -10,7 +10,9 @@ import { SharedDataService } from 'src/app/data.service';
 export class CampaignFormComponent {
   constructor(private dataservice: SharedDataService){}
   @Input() showForm!:boolean
+  @Input() campaignName:any 
   @Output() toggleForm = new EventEmitter<boolean>();
+  @Output() campaignNameChange = new EventEmitter<string>();
   newCampaign:{} = {}
   category:boolean = false
   location = new FormControl()
@@ -28,6 +30,7 @@ export class CampaignFormComponent {
   showFourthPage: boolean = false;
   browse:boolean = false;
   application:boolean = false;
+
   toggleFirstPage(){
     this.showFirstPage = !this.showFirstPage
   }
@@ -49,8 +52,6 @@ export class CampaignFormComponent {
 
   objectiveAlert:boolean = false;
 
-
-
   secondPage(){
     if(this.name.value == '')
       this.nameAlert = true;
@@ -61,6 +62,8 @@ export class CampaignFormComponent {
       this.objectiveAlert = true;
       }
     else{
+      if(this.nameAlert)
+      this.nameAlert = false;
       if(this.objectiveAlert)
       this.objectiveAlert = false;
       this.toggleFirstPage()
@@ -86,6 +89,11 @@ export class CampaignFormComponent {
   toggleApplication() {
     this.toggleCategory()
     this.application = true
+  }
+
+  updateCampaignName() {
+    this.campaignName = this.name.value
+    this.campaignNameChange.emit(this.campaignName) 
   }
 
   editableIndex: number | null = null;

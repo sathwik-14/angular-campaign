@@ -1,9 +1,3 @@
-
-<div *ngIf="name.value" class="text-center">
-    <label for="name" class="form-label h3 text-muted my-1 my-lg-3">{{name.value}}</label>
-</div>
-    
-
     <div
       class="stepper mt-4 d-none d-lg-flex justify-content-between align-items-center"
     >
@@ -58,6 +52,7 @@
     <input
       type="text"
       [formControl]="name"
+      (input)="updateCampaignName()"
       id="name"
       class="form-control shadow-none"
       value="{{ name }}"
@@ -147,12 +142,12 @@
             <label class="form-label">Locations</label>
             <ng-container  *ngIf="locations.length > 0">
               <div class="places">
-            <div class=" d-flex gap-2  align-items-center flex-item" *ngFor="let place of locations;let i = index">
+            <div class=" d-flex gap-1  align-items-center flex-item" *ngFor="let place of locations;let i = index">
               <div>{{i+1}}</div>
-              <div class="bg-light  d-flex  align-items-center ">
+              <div class="bg-light flex-grow-1 d-flex  align-items-center ">
               <input #place type="text" class="bg-light  list-name " [ngClass]="{ 'edit-mode': isEditable(i) }" (blur)="toggleEditable(null)" [value]="place" [readonly]="!isEditable(i)" />  
               <i  class="bi bi-pencil-square ms-auto" (click)="toggleEditable(i)" *ngIf="!isEditable(i)"></i>
-              <i class="bi bi-check2" *ngIf="isEditable(i)" (click)="toggleEditable(i)"></i>
+              <i class="bi bi-check2 ms-auto" *ngIf="isEditable(i)" (click)="toggleEditable(i)"></i>
             </div> 
               <div class="ms-auto"><i class="bi bi-trash" (click)="deleteLocation(i)"></i></div>
             </div>
@@ -363,7 +358,7 @@
       cx="50"
       cy="50"
       r="40"
-      stroke="#000000"
+      stroke="#ffffff"
       fill="none"
       stroke-width="8"
       stroke-dasharray="226.1946710584651 78.73155701948866"

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CampaignInterface } from './types/campaign.interface'
 import { SharedDataService } from '../data.service';
 @Component({
@@ -6,22 +6,25 @@ import { SharedDataService } from '../data.service';
   templateUrl: './campaign.component.html',
   styleUrls: ['./campaign.component.scss']
 })
-export class CampaignComponent implements OnInit {
+export class CampaignComponent{
 
-  constructor(private dataService: SharedDataService) { }
-  campaignData: CampaignInterface[] = [];
-
-  ngOnInit(): void {
-    this.campaignData = this.dataService.getData();
-    this.ascOrder = true
+  constructor(private dataService: SharedDataService) { 
+    this.dataService.getData().subscribe(data => this.campaignData = data);
     this.sortDate()
   }
+  campaignData: CampaignInterface[] = [];
+
+  newCampaignName: string | null= 'New Campaign';
   showForm:boolean = false;
   ascOrder = true;
   
   toggleForm(){
     this.showForm = !this.showForm
     this.sortDate()
+  }
+
+  onCampaignNameChange(newName: string) {
+    this.newCampaignName = newName;
   }
 
 

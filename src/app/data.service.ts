@@ -1,5 +1,5 @@
 // shared-data.service.ts
-
+import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { CampaignInterface } from './campaign/types/campaign.interface';
 
@@ -49,8 +49,8 @@ export class SharedDataService {
   ]
   // Add methods to access and modify the data as needed
 
-  getData(): any {
-    return this.campaignData;
+  getData(): Observable<any> {
+    return of(this.campaignData);
   }
 
   addData(newItem: any): void {
