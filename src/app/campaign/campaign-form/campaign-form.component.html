@@ -1,54 +1,55 @@
-    <div
-      class="stepper mt-4 d-none d-lg-flex justify-content-between align-items-center"
-    >
-      <div class="step-1 fs-5" [ngClass]="showFirstPage ? '' : 'text-muted '">
-        <i
-          class="bi me-2"
-          [ngClass]="
-            showFirstPage ? ' bi-1-circle-fill text-primary' : ' bi-1-circle'
-          "
-        ></i>
-        Campaign Detail
-      </div>
-      <div class="filler"></div>
-      <div class="step-2 fs-5" [ngClass]="showSecondPage ? '' : 'text-muted '">
-        <i
-          class="bi me-2"
-          [ngClass]="
-            showSecondPage ? 'text-primary bi-2-circle-fill' : 'bi-2-circle'
-          "
-        ></i>
-        Location Detail
-      </div>
-      <div class="filler"></div>
-      <div class="step-3 fs-5" [ngClass]="showThirdPage ? '' : 'text-muted '">
-        <i
-          class="bi me-2"
-          [ngClass]="
-            showThirdPage ? 'text-primary bi-3-circle-fill' : 'bi-3-circle'
-          "
-        ></i>
-        Audience
-      </div>
-      <div class="filler"></div>
-      <div class="step-4 fs-5" [ngClass]="showFourthPage ? '' : 'text-muted '">
-        <i
-          class="bi me-2"
-          [ngClass]="
-            showFourthPage ? 'text-primary bi-4-circle-fill' : 'bi-4-circle'
-          "
-        ></i>
-        Campaign Summary
-      </div>
-    </div>
+<div
+  class="stepper mt-4 d-none d-lg-flex justify-content-between align-items-center"
+>
+  <div class="step-1 fs-5" [ngClass]="showFirstPage ? '' : 'text-muted '">
+    <i
+      class="bi me-2"
+      [ngClass]="
+        showFirstPage ? ' bi-1-circle-fill text-primary' : ' bi-1-circle'
+      "
+    ></i>
+    Campaign Detail
+  </div>
+  <div class="filler"></div>
+  <div class="step-2 fs-5" [ngClass]="showSecondPage ? '' : 'text-muted '">
+    <i
+      class="bi me-2"
+      [ngClass]="
+        showSecondPage ? 'text-primary bi-2-circle-fill' : 'bi-2-circle'
+      "
+    ></i>
+    Location Detail
+  </div>
+  <div class="filler"></div>
+  <div class="step-3 fs-5" [ngClass]="showThirdPage ? '' : 'text-muted '">
+    <i
+      class="bi me-2"
+      [ngClass]="
+        showThirdPage ? 'text-primary bi-3-circle-fill' : 'bi-3-circle'
+      "
+    ></i>
+    Audience
+  </div>
+  <div class="filler"></div>
+  <div class="step-4 fs-5" [ngClass]="showFourthPage ? '' : 'text-muted '">
+    <i
+      class="bi me-2"
+      [ngClass]="
+        showFourthPage ? 'text-primary bi-4-circle-fill' : 'bi-4-circle'
+      "
+    ></i>
+    Campaign Summary
+  </div>
+</div>
 
-    <div
-      class="form-container d-flex flex-column container p-4 mt-lg-3"
-      *ngIf="showFirstPage"
+<div
+  class="form-container d-flex flex-column container p-4 mt-lg-3"
+  *ngIf="showFirstPage"
+>
+  <div class="mb-3">
+    <label for="name" class="form-label"
+      >Campaign Name <span class="text-danger">*</span></label
     >
-
-    <div class="mb-3">
-    <label for="name" class="form-label ">Campaign Name <span class="text-danger">*</span></label>
     <input
       type="text"
       [formControl]="name"
@@ -61,323 +62,426 @@
     <span class="text-danger mt-2" *ngIf="nameAlert">Enter campaign name</span>
   </div>
 
-      <div class="mb-3">
-        <label for="objective" class="form-label">Campaign Objective <span class="text-danger">*</span></label>
-        <input type="text" [formControl]="objective" placeholder="objective" value={{objective}} class="form-control shadow-none" id="objective" />
-        <span class="text-danger mt-2" *ngIf="objectiveAlert">Enter campaign objective</span>
-      </div>
+  <div class="mb-3">
+    <label for="objective" class="form-label"
+      >Campaign Objective <span class="text-danger">*</span></label
+    >
+    <input
+      type="text"
+      [formControl]="objective"
+      placeholder="objective"
+      value="{{ objective }}"
+      class="form-control shadow-none"
+      id="objective"
+    />
+    <span class="text-danger mt-2" *ngIf="objectiveAlert"
+      >Enter campaign objective</span
+    >
+  </div>
 
-      <div class="d-flex gap-2">
-        <div class="mb-3 col">
-          <label for="category" class="">Campaign Category  </label>
+  <div class="d-flex gap-2">
+    <div class="mb-3 col">
+      <label for="category" class="">Campaign Category </label>
 
-          <select
-            class="form-select shadow-none"
-            [formControl]="categorySelect" 
-          >
-          <option value="select" selected>select</option>
-          <option *ngFor="let option of categories" [ngValue]="option">{{option}}</option>
-            
-          </select>
-        </div>
+      <select class="form-select shadow-none" [formControl]="categorySelect">
+        <option value="select" selected>select</option>
+        <option *ngFor="let option of categories" [ngValue]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
 
-        <div class="mb-3 col">
-          <label for="category" class="">Offer Type  </label>
+    <div class="mb-3 col">
+      <label for="category" class="">Offer Type </label>
 
-          <select
-            class="form-select shadow-none"
-            [formControl]="offerSelect"
-          >
-          <option value="select" selected>select</option>
-          <option *ngFor="let option of categories" [ngValue]="option">{{option}}</option>
+      <select class="form-select shadow-none" [formControl]="offerSelect">
+        <option value="select" selected>select</option>
+        <option *ngFor="let option of categories" [ngValue]="option">
+          {{ option }}
+        </option>
+      </select>
+    </div>
+  </div>
 
-          </select>
-        </div>
-      </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label"
+      >Additional Comments
+    </label>
+    <textarea
+      class="form-control shadow-none"
+      id="exampleFormControlTextarea1"
+      rows="3"
+      [formControl]="comments"
+      placeholder="comments..."
+    ></textarea>
+  </div>
+  <div class="btn btn-md ms-auto btn-primary-theme" (click)="secondPage()">
+    Next
+  </div>
+</div>
 
-      <div class="mb-3">
-        <label for="exampleFormControlTextarea1" class="form-label"
-          >Additional Comments </label
-        >
-        <textarea
-          class="form-control shadow-none"
-          id="exampleFormControlTextarea1"
-          rows="3"
-          [formControl]="comments"
-          placeholder="comments..."
-        ></textarea>
-      </div>
-      <div
-        class="btn btn-md ms-auto btn-primary-theme"
-        (click)="secondPage()"
-      >
-        Next
+<div
+  class="form-container d-flex flex-column container p-4 mt-lg-3"
+  *ngIf="showSecondPage"
+>
+  <div class="d-flex flex-column flex-lg-row">
+    <div class="d-flex flex-column gap-2">
+      <label for="category"
+        >Location Detail (Optional) &nbsp;<i
+          class="bi bi-info-circle-fill text-muted"
+        ></i
+      ></label>
+
+      <input
+        type="text"
+        class="form-control"
+        name="location"
+        placeholder="Add Location"
+        [formControl]="location"
+        (change)="addLocation($event)"
+      />
+
+      <div class="mb-3 d-flex">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7778.612017809424!2d74.83442707439495!3d12.888034113642867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35ba59c0c7c3d%3A0x857ed9a4e15efd09!2sAjantha%20business%20centre!5e0!3m2!1sen!2sin!4v1689769326528!5m2!1sen!2sin"
+          width="280"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
 
-    <div
-      class="form-container d-flex flex-column container p-4 mt-lg-3"
-      *ngIf="showSecondPage"
-    >
-      <div class="d-flex flex-column flex-lg-row">
-        <div class="d-flex flex-column gap-2">
-          <label for="category">Location Detail (Optional) &nbsp;<i class="bi bi-info-circle-fill text-muted"></i></label>
-
-          <input type="text" class="form-control" name="location" placeholder="Add Location" [formControl]="location" (change)="addLocation($event)" >
-
-          <div class="mb-3 d-flex ">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7778.612017809424!2d74.83442707439495!3d12.888034113642867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35ba59c0c7c3d%3A0x857ed9a4e15efd09!2sAjantha%20business%20centre!5e0!3m2!1sen!2sin!4v1689769326528!5m2!1sen!2sin"
-              width="280"
-              style="border: 0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-        </div>
-
-        <div class="col px-1 px-lg-5 mt-4">
-          <div class="d-flex flex-column gap-2 justify-content-between">
-            <label class="form-label">Locations</label>
-            <ng-container  *ngIf="locations.length > 0">
-              <div class="places">
-            <div class=" d-flex gap-1  align-items-center flex-item" *ngFor="let place of locations;let i = index">
-              <div>{{i+1}}</div>
-              <div class="bg-light flex-grow-1 d-flex  align-items-center ">
-              <input #place type="text" class="bg-light  list-name " [ngClass]="{ 'edit-mode': isEditable(i) }" (blur)="toggleEditable(null)" [value]="place" [readonly]="!isEditable(i)" />  
-              <i  class="bi bi-pencil-square ms-auto" (click)="toggleEditable(i)" *ngIf="!isEditable(i)"></i>
-              <i class="bi bi-check2 ms-auto" *ngIf="isEditable(i)" (click)="toggleEditable(i)"></i>
-            </div> 
-              <div class="ms-auto"><i class="bi bi-trash" (click)="deleteLocation(i)"></i></div>
+    <div class="col px-1 px-lg-5 mt-4">
+      <div class="d-flex flex-column gap-2 justify-content-between">
+        <label class="form-label">Locations</label>
+        <ng-container *ngIf="locations.length > 0">
+          <div class="places">
+            <div
+              class="d-flex gap-1 align-items-center flex-item"
+              *ngFor="let place of locations; let i = index"
+            >
+              <div>{{ i + 1 }}</div>
+              <div class="bg-light flex-grow-1 d-flex align-items-center">
+                <input
+                  #place
+                  type="text"
+                  class="bg-light list-name"
+                  [ngClass]="{ 'edit-mode': isEditable(i) }"
+                  (blur)="toggleEditable(null)"
+                  [value]="place"
+                  [readonly]="!isEditable(i)"
+                />
+                <i
+                  class="bi bi-pencil-square ms-auto"
+                  (click)="toggleEditable(i)"
+                  *ngIf="!isEditable(i)"
+                ></i>
+                <i
+                  class="bi bi-check2 ms-auto"
+                  *ngIf="isEditable(i)"
+                  (click)="toggleEditable(i)"
+                ></i>
+              </div>
+              <div class="ms-auto">
+                <i class="bi bi-trash" (click)="deleteLocation(i)"></i>
+              </div>
             </div>
           </div>
         </ng-container>
         <ng-container *ngIf="locations.length == 0">
-            <div class="text-center bg-light p-1">No location added ! </div>
+          <div class="text-center bg-light p-1">No location added !</div>
         </ng-container>
 
-            <label for="category mt-auto">Radius</label>
+        <label for="category mt-auto">Radius</label>
 
-          <select
-            class="form-select  mb-3 shadow-none"
-            aria-label="Default select example"
-          >
-            <option selected>100M</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-          </div>
-          
-        </div>
-      </div>    
-
-      <div class="d-flex">
-        <div class="btn btn-md btn-secondary-theme" (click)="secondPage()">
-          Back
-        </div>
-        
-        <div class="btn btn-md ms-auto btn-primary-theme" (click)="thirdPage()">
-          Next
-        </div>
+        <select
+          class="form-select mb-3 shadow-none"
+          aria-label="Default select example"
+        >
+          <option selected>100M</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
       </div>
     </div>
+  </div>
 
-    <div
-      class="form-container d-flex flex-column container p-4 mt-lg-3"
-      *ngIf="showThirdPage"
-    >
-      <div class="d-flex flex-column">
-        <div>
-          <label for="category">Audience &nbsp;<i class="bi bi-info-circle-fill text-muted"></i></label>
-        </div>
-        <div class="input-group mt-3">
-          <div class="input-group mb-1">
-            <input type="text" class="form-control" placeholder="Search" aria-label="Text input with dropdown button">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" (click)="toggleBrowse()">Browse</button>
-          </div>         
-         </div>
-
-
-         <div class="browse-container d-flex flex-column flex-lg-row " *ngIf="browse" >
-          <div class="d-flex flex-column industry browse-category flex-grow-1" >
-            <div class="heading text-muted">Industry</div>
-            <div class="option d-flex align-items-center justify-content-between " (mouseenter)="toggleCategory()">
-              <div class="d-flex flex-column">
-              <span class="h6">Demography</span>
-              <div class="text-muted">10 Categories</div>
-            </div>
-            <i class="bi bi-chevron-right text-dark"></i>
-            </div>
-            <div class="option d-flex align-items-center justify-content-between ">
-              <div class="d-flex flex-column">
-              <span class="h6">Geography</span>
-              <div class="text-muted">5 Categories</div>
-              </div>
-              <i class="bi bi-chevron-right text-dark"></i>
-            </div>
-            <div class="option d-flex align-items-center justify-content-between ">
-              <div class="d-flex flex-column">
-              <span class="h6">Commercial Relevance</span>
-              <div class="text-muted">11 Categories</div>
-              </div>
-              <i class="bi bi-chevron-right text-dark"></i>
-            </div>
-          </div>
-          <div class="d-flex flex-column  category browse-category" *ngIf="category">
-            <div class="heading text-muted">Category</div>
-            <div class="option d-flex align-items-center justify-content-between "  (mouseenter)="toggleApplication()">
-              <div class="d-flex flex-column">
-              <span class="h6">Age</span>
-              <div class="text-muted">6 Categories</div>
-            </div>
-          <i class="bi bi-chevron-right text-dark"></i>
-            </div>
-            <div class="option d-flex align-items-center justify-content-between ">
-              <div class="d-flex flex-column">
-              <span class="h6">Gender</span>
-              <div class="text-muted">7 Categories</div>
-            </div>
-            <i class="bi bi-chevron-right text-dark"></i>
-            </div>
-            <div class="option d-flex align-items-center justify-content-between ">
-              <div class="d-flex flex-column">
-              <span class="h6">360 Labels</span>
-              <div class="text-muted">7 Categories</div>
-            </div>
-            <i class="bi bi-chevron-right text-dark"></i>
-            </div>
-            <div class="option d-flex align-items-center justify-content-between ">
-              <div class="d-flex flex-column">
-              <span class="h6">Handset</span>
-              <div class="text-muted">7 Categories</div>
-            </div>
-            <i class="bi bi-chevron-right text-dark"></i>
-            </div>
-          </div>
-          <div class="d-flex flex-column application browse-category" *ngIf="application">
-            <div class="heading text-muted">Application</div>
-            <div class="form-check my-1 d-flex gap-2">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                &lt; 20
-              </label>
-              <div class="text-muted ms-auto">3.2M</div>
-            </div>
-            <div class="form-check my-1 d-flex gap-2">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                20 - 29
-              </label>
-              <div class="text-muted ms-auto">7.5M</div>
-            </div>
-            <div class="form-check my-1 d-flex gap-2">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                30 - 39
-              </label>
-              <div class="text-muted ms-auto">7.2M</div>
-            </div>
-            <div class="form-check my-1 d-flex gap-2">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                40 - 49
-              </label>
-              <div class="text-muted ms-auto">12.8M</div>
-            </div>
-            <div class="form-check my-1 d-flex gap-2">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                50 - 59
-              </label>
-              <div class="text-muted ms-auto">2.8M</div>
-            </div>
-            <div class="form-check my-1 d-flex gap-2">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                &ge; 60
-              </label>
-              <div class="text-muted ms-auto">2.6M</div>
-            </div>
-          </div>      
-         </div>
-
-         <div class="my-2 fs-4 text-center text-muted">No Audiences</div>
-
-      </div>
-
-      <div class="d-flex">
-        <div class="btn btn-md btn-secondary-theme" (click)="thirdPage()">
-          Back
-        </div>
-
-        <div class="btn btn-md ms-auto btn-primary-theme" (click)="fourthPage()">
-          Next
-        </div>
-      </div>
+  <div class="d-flex">
+    <div class="btn btn-md btn-secondary-theme" (click)="secondPage()">
+      Back
     </div>
 
-    <div
-      class="form-container d-flex flex-column container p-4 mt-lg-3"
-      *ngIf="showFourthPage"
-    >
-      <div class="d-flex flex-column gap-3 mb-3">
-        <div class="fs-7 text-muted"> Name : <span class="text-dark">{{name.value}}</span></div>
-        <div class="fs-7 text-muted"> Objective : <span class="text-dark">{{objective.value}}</span></div>
-        <div class="fs-7 text-muted"> Category : <span class="text-dark badge bg-info">{{categorySelect.value}}</span></div>
-        <div class="fs-7 text-muted"> Offer Type : <span class="text-dark badge bg-info">{{offerSelect.value}}</span></div>
-        <div class="fs-7 text-muted"> Comments : <span class="text-dark">{{comments.value}}</span></div>
-        <div class="fs-7 text-muted"> Locations : <span  Class="text-dark mx-1" *ngFor="let location of locations">{{location}},</span></div>
-        <div class="text-danger">NOTE : Make sure all details are entered properly before submitting.</div>
-      </div>
+    <div class="btn btn-md ms-auto btn-primary-theme" (click)="thirdPage()">
+      Next
+    </div>
+  </div>
+</div>
 
-      <div class="d-flex">
-        <div class="btn btn-md btn-secondary-theme" (click)="fourthPage()">
-          Back
-        </div>
-        <div class="btn btn-md ms-auto btn-primary-theme" (click)="submitForm()">
-          Submit
-          
-          <svg
-          *ngIf="submitted"
-  version="1.1"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
-  viewBox="0 0 100 100"
-  xml:space="preserve"
-  style="enable-background:new 0 0 100 100;"
-  fill="#000000"
-  width="20px"
-  height="20px"
+<div
+  class="form-container d-flex flex-column container p-4 mt-lg-3"
+  *ngIf="showThirdPage"
 >
-  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-  <g id="SVGRepo_gCarrier">
-    <circle
-      cx="50"
-      cy="50"
-      r="40"
-      stroke="#ffffff"
-      fill="none"
-      stroke-width="8"
-      stroke-dasharray="226.1946710584651 78.73155701948866"
-      transform="rotate(0.63606 50 50)"
-    >
-      <animateTransform
-        attributeName="transform"
-        type="rotate"
-        repeatCount="indefinite"
-        dur="1.923076923076923s"
-        keyTimes="0;1"
-        values="0 50 50;360 50 50"
-      ></animateTransform>
-    </circle>
-  </g>
-</svg>
+  <div class="d-flex flex-column">
+    <div>
+      <label for="category"
+        >Audience &nbsp;<i class="bi bi-info-circle-fill text-muted"></i
+      ></label>
+    </div>
+    <div class="input-group mt-3">
+      <div class="input-group mb-1">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search"
+          aria-label="Text input with dropdown button"
+        />
+        <button
+          class="btn btn-outline-secondary dropdown-toggle"
+          type="button"
+          (click)="toggleBrowse()"
+        >
+          Browse
+        </button>
+      </div>
+    </div>
 
-
-
+    <div class="browse-container d-flex flex-column flex-lg-row" *ngIf="browse">
+      <div class="d-flex flex-column industry browse-category flex-grow-1">
+        <div class="heading text-muted">Industry</div>
+        <div
+          class="option d-flex align-items-center justify-content-between"
+          (mouseenter)="toggleCategory()"
+        >
+          <div class="d-flex flex-column">
+            <span class="h6">Demography</span>
+            <div class="text-muted">10 Categories</div>
+          </div>
+          <i class="bi bi-chevron-right text-dark"></i>
+        </div>
+        <div class="option d-flex align-items-center justify-content-between">
+          <div class="d-flex flex-column">
+            <span class="h6">Geography</span>
+            <div class="text-muted">5 Categories</div>
+          </div>
+          <i class="bi bi-chevron-right text-dark"></i>
+        </div>
+        <div class="option d-flex align-items-center justify-content-between">
+          <div class="d-flex flex-column">
+            <span class="h6">Commercial Relevance</span>
+            <div class="text-muted">11 Categories</div>
+          </div>
+          <i class="bi bi-chevron-right text-dark"></i>
+        </div>
+      </div>
+      <div class="d-flex flex-column category browse-category" *ngIf="category">
+        <div class="heading text-muted">Category</div>
+        <div
+          class="option d-flex align-items-center justify-content-between"
+          (mouseenter)="toggleApplication()"
+        >
+          <div class="d-flex flex-column">
+            <span class="h6">Age</span>
+            <div class="text-muted">6 Categories</div>
+          </div>
+          <i class="bi bi-chevron-right text-dark"></i>
+        </div>
+        <div class="option d-flex align-items-center justify-content-between">
+          <div class="d-flex flex-column">
+            <span class="h6">Gender</span>
+            <div class="text-muted">7 Categories</div>
+          </div>
+          <i class="bi bi-chevron-right text-dark"></i>
+        </div>
+        <div class="option d-flex align-items-center justify-content-between">
+          <div class="d-flex flex-column">
+            <span class="h6">360 Labels</span>
+            <div class="text-muted">7 Categories</div>
+          </div>
+          <i class="bi bi-chevron-right text-dark"></i>
+        </div>
+        <div class="option d-flex align-items-center justify-content-between">
+          <div class="d-flex flex-column">
+            <span class="h6">Handset</span>
+            <div class="text-muted">7 Categories</div>
+          </div>
+          <i class="bi bi-chevron-right text-dark"></i>
+        </div>
+      </div>
+      <div
+        class="d-flex flex-column application browse-category"
+        *ngIf="application"
+      >
+        <div class="heading text-muted">Application</div>
+        <div class="form-check my-1 d-flex gap-2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            &lt; 20
+          </label>
+          <div class="text-muted ms-auto">3.2M</div>
+        </div>
+        <div class="form-check my-1 d-flex gap-2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            20 - 29
+          </label>
+          <div class="text-muted ms-auto">7.5M</div>
+        </div>
+        <div class="form-check my-1 d-flex gap-2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            30 - 39
+          </label>
+          <div class="text-muted ms-auto">7.2M</div>
+        </div>
+        <div class="form-check my-1 d-flex gap-2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            40 - 49
+          </label>
+          <div class="text-muted ms-auto">12.8M</div>
+        </div>
+        <div class="form-check my-1 d-flex gap-2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            50 - 59
+          </label>
+          <div class="text-muted ms-auto">2.8M</div>
+        </div>
+        <div class="form-check my-1 d-flex gap-2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            &ge; 60
+          </label>
+          <div class="text-muted ms-auto">2.6M</div>
         </div>
       </div>
     </div>
+
+    <div class="my-2 fs-4 text-center text-muted">No Audiences</div>
+  </div>
+
+  <div class="d-flex">
+    <div class="btn btn-md btn-secondary-theme" (click)="thirdPage()">Back</div>
+
+    <div class="btn btn-md ms-auto btn-primary-theme" (click)="fourthPage()">
+      Next
+    </div>
+  </div>
+</div>
+
+<div
+  class="form-container d-flex flex-column container p-4 mt-lg-3"
+  *ngIf="showFourthPage"
+>
+  <div class="d-flex flex-column gap-3 mb-3">
+    <div class="fs-7 text-muted">
+      Name : <span class="text-dark">{{ name.value }}</span>
+    </div>
+    <div class="fs-7 text-muted">
+      Objective : <span class="text-dark">{{ objective.value }}</span>
+    </div>
+    <div class="fs-7 text-muted">
+      Category :
+      <span class="text-dark badge bg-info">{{ categorySelect.value }}</span>
+    </div>
+    <div class="fs-7 text-muted">
+      Offer Type :
+      <span class="text-dark badge bg-info">{{ offerSelect.value }}</span>
+    </div>
+    <div class="fs-7 text-muted">
+      Comments : <span class="text-dark">{{ comments.value }}</span>
+    </div>
+    <div class="fs-7 text-muted">
+      Locations :
+      <span Class="text-dark mx-1" *ngFor="let location of locations"
+        >{{ location }},</span
+      >
+    </div>
+    <div class="text-danger">
+      NOTE : Make sure all details are entered properly before submitting.
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div class="btn btn-md btn-secondary-theme" (click)="fourthPage()">
+      Back
+    </div>
+    <div class="btn btn-md ms-auto btn-primary-theme" (click)="submitForm()">
+      Submit
+
+      <svg
+        *ngIf="submitted"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 100 100"
+        xml:space="preserve"
+        style="enable-background: new 0 0 100 100"
+        fill="#000000"
+        width="20px"
+        height="20px"
+      >
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g
+          id="SVGRepo_tracerCarrier"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        ></g>
+        <g id="SVGRepo_gCarrier">
+          <circle
+            cx="50"
+            cy="50"
+            r="40"
+            stroke="#ffffff"
+            fill="none"
+            stroke-width="8"
+            stroke-dasharray="226.1946710584651 78.73155701948866"
+            transform="rotate(0.63606 50 50)"
+          >
+            <animateTransform
+              attributeName="transform"
+              type="rotate"
+              repeatCount="indefinite"
+              dur="1.923076923076923s"
+              keyTimes="0;1"
+              values="0 50 50;360 50 50"
+            ></animateTransform>
+          </circle>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>

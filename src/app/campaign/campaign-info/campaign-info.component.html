@@ -1,83 +1,100 @@
 <div class="container">
-<div class="hero-container container pt-3">
-    <p class="text-center h4 ">Campaign Details</p>
+  <div class="hero-container container pt-3">
+    <p class="text-center h4">Campaign Details</p>
     <div class="p-1 p-lg-5">
-  <p class="fs-7 d-flex justify-content-between">
-    <span class="h6">Id:&nbsp;</span> {{ foundObject["id"]?foundObject['id']:'NA' }}
-  </p>
-  <p class="fs-7 d-flex justify-content-between">
-    <span class="h6">Name:&nbsp;</span> {{ foundObject["name"]?foundObject['name']:'NA' }}
-  </p>
-  <p class="fs-7 d-flex justify-content-between">
-    <span class="h6">Objective:&nbsp;</span> {{ foundObject["objective"]?foundObject['objective']:'NA' }}
-  </p>
-  <p class="fs-7 d-flex justify-content-between">
-    <span class="h6">Category Type:&nbsp;</span> {{ foundObject["category"]?foundObject['category']:'NA' }}
-  </p>
-  <p class="fs-7 d-flex justify-content-between">
-    <span class="h6">Offer Type:&nbsp;</span> {{ foundObject["offer"]?foundObject['offer']:'NA' }}
-  </p>
-  <p class="fs-7 d-flex justify-content-between">
-    <span class="h6">Locations:&nbsp;</span>
-    <span *ngIf="!foundObject['location']">NA</span>
-    <ng-container  >
-      {{ foundObject['location'] }}
-    </ng-container>
-  
-  </p>
-  <p class="fs-7 d-flex justify-content-between">
-    <span class="h6">Status:&nbsp;</span> {{ foundObject["status"]?foundObject['status']:'NA' }}
-  </p>
-  <p class="fs-7 d-flex justify-content-between">
-    <span class="h6">CTR:&nbsp;</span> {{ foundObject["ctr"]?foundObject['ctr']:'NA' }} %
-  </p>
-  <p class="fs-7 d-flex justify-content-between">
-    <span class="h6">Start Date:&nbsp;</span> {{ foundObject['start date'] ? (foundObject['start date'] | date : "yyyy-MM-dd") :'NA' }}
-  </p>
-</div>
-  <div class="text-center mb-3">
-    <div class="btn  btn-outline-danger" (click)="deleteData()">Delete Campaign &nbsp;<i *ngIf="!deleted" class="bi bi-trash"></i>
-    <svg
+      <p class="fs-7 d-flex justify-content-between">
+        <span class="h6">Id:&nbsp;</span>
+        {{ foundObject["id"] ? foundObject["id"] : "NA" }}
+      </p>
+      <p class="fs-7 d-flex justify-content-between">
+        <span class="h6">Name:&nbsp;</span>
+        {{ foundObject["name"] ? foundObject["name"] : "NA" }}
+      </p>
+      <p class="fs-7 d-flex justify-content-between">
+        <span class="h6">Objective:&nbsp;</span>
+        {{ foundObject["objective"] ? foundObject["objective"] : "NA" }}
+      </p>
+      <p class="fs-7 d-flex justify-content-between">
+        <span class="h6">Category Type:&nbsp;</span>
+        {{ foundObject["category"] ? foundObject["category"] : "NA" }}
+      </p>
+      <p class="fs-7 d-flex justify-content-between">
+        <span class="h6">Offer Type:&nbsp;</span>
+        {{ foundObject["offer"] ? foundObject["offer"] : "NA" }}
+      </p>
+      <p class="fs-7 d-flex justify-content-between">
+        <span class="h6">Locations:&nbsp;</span>
+        <span *ngIf="!foundObject['location']">NA</span>
+        <ng-container>
+          {{ foundObject["location"] }}
+        </ng-container>
+      </p>
+      <p class="fs-7 d-flex justify-content-between">
+        <span class="h6">Status:&nbsp;</span>
+        {{ foundObject["status"] ? foundObject["status"] : "NA" }}
+      </p>
+      <p class="fs-7 d-flex justify-content-between">
+        <span class="h6">CTR:&nbsp;</span>
+        {{ foundObject["ctr"] ? foundObject["ctr"] : "NA" }} %
+      </p>
+      <p class="fs-7 d-flex justify-content-between">
+        <span class="h6">Start Date:&nbsp;</span>
+        {{
+          foundObject["start date"]
+            ? (foundObject["start date"] | date : "yyyy-MM-dd")
+            : "NA"
+        }}
+      </p>
+    </div>
+    <div class="text-center mb-3">
+      <div class="btn btn-outline-danger" (click)="deleteData()">
+        Delete Campaign &nbsp;<i *ngIf="!deleted" class="bi bi-trash"></i>
+        <svg
           *ngIf="deleted"
-  version="1.1"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
-  viewBox="0 0 100 100"
-  xml:space="preserve"
-  style="enable-background:new 0 0 100 100;"
-  fill="#000000"
-  width="20px"
-  height="20px"
->
-  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-  <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-  <g id="SVGRepo_gCarrier">
-    <circle
-      cx="50"
-      cy="50"
-      r="40"
-      stroke="#ffffff"
-      fill="none"
-      stroke-width="8"
-      stroke-dasharray="226.1946710584651 78.73155701948866"
-      transform="rotate(0.63606 50 50)"
-    >
-      <animateTransform
-        attributeName="transform"
-        type="rotate"
-        repeatCount="indefinite"
-        dur="1.923076923076923s"
-        keyTimes="0;1"
-        values="0 50 50;360 50 50"
-      ></animateTransform>
-    </circle>
-  </g>
-</svg>
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 100 100"
+          xml:space="preserve"
+          style="enable-background: new 0 0 100 100"
+          fill="#000000"
+          width="20px"
+          height="20px"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_gCarrier">
+            <circle
+              cx="50"
+              cy="50"
+              r="40"
+              stroke="#ffffff"
+              fill="none"
+              stroke-width="8"
+              stroke-dasharray="226.1946710584651 78.73155701948866"
+              transform="rotate(0.63606 50 50)"
+            >
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                repeatCount="indefinite"
+                dur="1.923076923076923s"
+                keyTimes="0;1"
+                values="0 50 50;360 50 50"
+              ></animateTransform>
+            </circle>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="text-center">
+      <div class="btn btn-transparent" (click)="goBack()">
+        <i class="bi bi-chevron-left"></i> &nbsp;Back
+      </div>
     </div>
   </div>
-  <div class="text-center">
-    <div class="btn btn-transparent" (click)="goBack()"><i class="bi bi-chevron-left"></i> &nbsp;Back </div>
-
-  </div>
-</div>
 </div>

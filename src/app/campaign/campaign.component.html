@@ -3,7 +3,7 @@
     <p class="header-title h1">Manage Campaigns</p>
     <div class="dropdown">
       <button
-        class="btn btn-outline-secondary "
+        class="btn btn-outline-secondary"
         type="button"
         data-bs-toggle="dropdown"
         aria-expanded="false"
@@ -15,7 +15,7 @@
   <div class="list-campaign" *ngIf="!showForm">
     <div class="fs-7 text-muted">Manage Campaign</div>
 
-    <div class="hero-container p-4  mt-2">
+    <div class="hero-container p-4 mt-2">
       <div class="btn btn-primary-theme my-1 my-lg-3" (click)="toggleForm()">
         Create Campaign
       </div>
@@ -104,16 +104,16 @@
       <span class="fs-7 text-muted hover" (click)="toggleForm()"
         >Manage Campaign</span
       >&nbsp;>&nbsp;
-      <span class="fs-7 text-muted">{{newCampaignName}}</span>
+      <span class="fs-7 text-muted">{{ newCampaignName }}</span>
     </div>
 
     <div class="hero-container p-2 p-lg-4 mt-2 mt-lg-4">
-      <app-campaign-form  [(campaignName)]="newCampaignName" [showForm]="showForm" (toggleForm)="toggleForm()">
-
+      <app-campaign-form
+        [(campaignName)]="newCampaignName"
+        [showForm]="showForm"
+        (toggleForm)="toggleForm()"
+      >
       </app-campaign-form>
     </div>
-
-
-    </div>
   </div>
-
+</div>

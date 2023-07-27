@@ -5,20 +5,20 @@
 $breakpoint-phone: 481px;
 $breakpoint-tablet: 769px;
 
-.hover{
-  &:hover{
+.hover {
+  &:hover {
     cursor: pointer;
     color: #478efc !important;
   }
 }
 
-.filler{
-  height: .2vh;
+.filler {
+  height: 0.2vh;
   background-color: rgb(182, 182, 182);
   width: 8%;
 }
 
-.form-container{
+.form-container {
   width: 100%;
   background-color: #f4f3f4;
   border-radius: 1rem;
@@ -57,7 +57,7 @@ $breakpoint-tablet: 769px;
   }
 
   .btn-outline-primary-theme {
-    border: #478efc .1px solid;
+    border: #478efc 0.1px solid;
     color: #478efc;
   }
 
@@ -65,10 +65,10 @@ $breakpoint-tablet: 769px;
     font-weight: 900;
   }
 
-  td{
-    span{
-        display: inline-block;
-        width: 100%;
+  td {
+    span {
+      display: inline-block;
+      width: 100%;
     }
   }
 
@@ -79,7 +79,7 @@ $breakpoint-tablet: 769px;
     }
   }
 
-  .d-block{
+  .d-block {
     width: 5vw;
   }
 
@@ -103,16 +103,15 @@ $breakpoint-tablet: 769px;
   .grey-badge {
     background-color: #d4d2d4;
   }
-  
 }
 
 @media (max-width: #{$breakpoint-phone}) {
-  .form-container{
+  .form-container {
     width: 100%;
     background-color: #f4f3f4;
     border-radius: 1rem;
     label {
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
   th {

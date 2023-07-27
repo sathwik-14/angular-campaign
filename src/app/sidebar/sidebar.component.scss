@@ -3,9 +3,9 @@ $breakpoint-tablet: 769px;
 
 .sidebar {
   position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: white;
   height: 100vh;
   width: 4rem;
@@ -21,63 +21,62 @@ $breakpoint-tablet: 769px;
   }
 
   .dashboard {
-    margin-top: 6rem ;
+    margin-top: 6rem;
   }
 
   i {
-    font-size: 2rem;   
+    font-size: 2rem;
   }
-//   .bi-arrow-right{
-//     position: fixed;
-//     bottom: 0;
-// }
+  //   .bi-arrow-right{
+  //     position: fixed;
+  //     bottom: 0;
+  // }
   .active {
     background-color: #f4f3f4 !important;
     color: #478efc !important;
-    padding: 1rem ;
+    padding: 1rem;
   }
 }
 
 @media (max-width: #{$breakpoint-tablet}) {
-  
-.sidebar {
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  // flex-direction: column;
-  align-items: center;
-background-color: white;
-height: 4rem;
-width: 100vw;
+  .sidebar {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    // flex-direction: column;
+    align-items: center;
+    background-color: white;
+    height: 4rem;
+    width: 100vw;
 
-.dashboard {
-  margin-top: 0 !important;
-}
+    .dashboard {
+      margin-top: 0 !important;
+    }
 
-a {
-  color: inherit; /* Remove default link color */
-  text-decoration: none; /* Remove underline */
-  transition: all 0.3s ease-in-out;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.2);
+    a {
+      color: inherit; /* Remove default link color */
+      text-decoration: none; /* Remove underline */
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.2);
+      }
+    }
+
+    i {
+      font-size: 2rem;
+    }
+    .bi-arrow-right {
+      display: none;
+    }
+    .active {
+      background-color: #f4f3f4 !important;
+      color: #478efc !important;
+      padding: 1rem;
+    }
   }
-}
-
-i {
-  font-size: 2rem;   
-}
-.bi-arrow-right{
-  display: none;
-}
-.active {
-  background-color: #f4f3f4 !important;
-  color: #478efc !important;
-  padding: 1rem;
-}
-}
 }
