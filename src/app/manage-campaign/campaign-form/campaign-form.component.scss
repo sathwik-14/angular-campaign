@@ -83,7 +83,10 @@ $breakpoint-tablet: 769px;
 .list-name {
   border: none;
   outline: none;
-  padding-left: 0.8rem !important;
+}
+
+.text-theme-primary {
+  color: #478efc;
 }
 
 .edit-mode {

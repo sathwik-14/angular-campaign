@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { SharedDataService } from 'src/app/data.service';
+import { Validators,FormBuilder, FormArray } from '@angular/forms';
+import { SharedDataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-campaign-form',
@@ -8,21 +8,25 @@ import { SharedDataService } from 'src/app/data.service';
   styleUrls: ['./campaign-form.component.scss'],
 })
 export class CampaignFormComponent {
-  constructor(private dataservice: SharedDataService) {}
+  constructor(private dataservice: SharedDataService,private fb:FormBuilder) {}
+
+  campaignForm = this.fb.group({
+    name: ['',Validators.required],
+    objective: ['',Validators.required],
+    categorySelect: ['select'],
+    offerSelect: ['select'],
+    comments: [''],
+    locations:this.fb.array([
+    ]),
+  });
+
   @Input() showForm!: boolean;
   @Input() campaignName: any;
   @Output() toggleForm = new EventEmitter<boolean>();
   @Output() campaignNameChange = new EventEmitter<string>();
   newCampaign: {} = {};
   category: boolean = false;
-  location = new FormControl();
-  name = new FormControl('');
-  objective = new FormControl('');
-  categorySelect = new FormControl('select');
-  offerSelect = new FormControl('select');
-  comments = new FormControl('');
   categories = ['first', 'second', 'third'];
-  locations: String[] = [];
   edit: boolean = false;
   showFirstPage: boolean = true;
   showSecondPage: boolean = false;
@@ -48,23 +52,13 @@ export class CampaignFormComponent {
     this.browse = !this.browse;
   }
 
-  nameAlert: boolean = false;
 
-  objectiveAlert: boolean = false;
 
   secondPage() {
-    if (this.name.value == '') this.nameAlert = true;
-    else if (this.objective.value == '') {
-      if (this.nameAlert) {
-        this.nameAlert = false;
-      }
-      this.objectiveAlert = true;
-    } else {
-      if (this.nameAlert) this.nameAlert = false;
-      if (this.objectiveAlert) this.objectiveAlert = false;
+  
       this.toggleFirstPage();
       this.toggleSecondPage();
-    }
+    
   }
 
   thirdPage() {
@@ -87,7 +81,7 @@ export class CampaignFormComponent {
   }
 
   updateCampaignName() {
-    this.campaignName = this.name.value;
+    this.campaignName = this.campaignForm.value.name;
     this.campaignNameChange.emit(this.campaignName);
   }
 
@@ -101,48 +95,64 @@ export class CampaignFormComponent {
     return this.editableIndex === index;
   }
 
-  addLocation(event: any) {
-    this.locations.push(this.location.value);
-    event.target.value = '';
+  addLocation(place: any) {
+    this.locations.push(this.fb.control(place.value));
+    place.value = ''
   }
+
+  get locations() {
+    return this.campaignForm.get('locations') as FormArray;
+  }
+
+  get name() {
+    return this.campaignForm.get('name');
+  }
+
+  get objective() {
+    return this.campaignForm.get('objective');
+  }
+
 
   onCategoryChange(event: any) {
     const selectedValue = event.target.value;
-    this.categorySelect.setValue(selectedValue.split(':')[1]);
+    this.campaignForm.value.categorySelect=selectedValue.split(':')[1];
     // console.log(this.categorySelect.value);
   }
 
   onOfferChange(event: any) {
     const selectedValue = event.target.value;
-    this.offerSelect.setValue(selectedValue.split(':')[1]);
+    this.campaignForm.value.offerSelect = selectedValue.split(':')[1];
     // console.log(this.offerSelect.value);
   }
 
   deleteLocation(i: any) {
-    if (i <= this.locations.length) this.locations.splice(i, 1);
+    this.locations.removeAt(i)
   }
 
   submitted: boolean = false;
 
   submitForm() {
     this.submitted = true;
-    setTimeout(() => {
-      if (this.name.value == '') alert('Please enter a name');
-      else if (this.objective.value == '') alert('Please enter objective');
-      else {
-        this.newCampaign = {
-          name: this.name.value,
-          objective: this.objective.value,
-          comment: this.comments.value,
-          category: this.categorySelect.value,
-          offer: this.offerSelect.value,
-          location: this.locations,
-        };
-        this.dataservice.addData(this.newCampaign);
-        this.submitted = false;
-        this.showForm = false;
-        this.toggleForm.emit(this.showForm);
-      }
-    }, 1000);
+    if(this.campaignForm.valid){
+      setTimeout(() => {
+          this.newCampaign = {
+            name: this.campaignForm.value.name,
+            objective: this.campaignForm.value.objective,
+            comment: this.campaignForm.value.comments,
+            category: this.campaignForm.value.categorySelect,
+            offer: this.campaignForm.value.offerSelect,
+            location: this.locations,
+          };
+          this.dataservice.addData(this.newCampaign);
+          this.submitted = false;
+          this.showForm = false;
+          this.toggleForm.emit(this.showForm);
+      }, 1000);
+    }
+    else {
+      this.submitted = false;
+
+    }
+    
   }
 }

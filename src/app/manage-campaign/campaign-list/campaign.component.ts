@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { CampaignInterface } from './types/campaign.interface';
-import { SharedDataService } from '../data.service';
+import { CampaignInterface } from '../types/campaign.interface';
+import { SharedDataService } from '../../services/data.service';
+
 @Component({
   selector: 'app-campaign',
   templateUrl: './campaign.component.html',
@@ -13,7 +14,7 @@ export class CampaignComponent {
   }
   campaignData: CampaignInterface[] = [];
 
-  newCampaignName: string | null = 'New Campaign';
+  newCampaignName: string  = 'New Campaign';
   showForm: boolean = false;
   ascOrder = true;
 

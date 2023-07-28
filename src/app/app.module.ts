@@ -3,15 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { CampaignComponent } from './campaign/campaign.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CampaignFormComponent } from './campaign/campaign-form/campaign-form.component';
+import { CampaignModule } from './manage-campaign/campaign.module';
 
 @NgModule({
   declarations: [AppComponent,
-    CampaignComponent,
-     SidebarComponent, CampaignFormComponent],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
+  SidebarComponent],
+  imports: [BrowserModule, AppRoutingModule, CampaignModule],
   providers: [],
   bootstrap: [AppComponent],
 })

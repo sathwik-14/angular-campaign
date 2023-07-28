@@ -1,7 +1,7 @@
 // shared-data.service.ts
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { CampaignInterface } from './campaign/types/campaign.interface';
+import { CampaignInterface } from '../manage-campaign/types/campaign.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +41,11 @@ export class SharedDataService {
     {
       "id": "P005",
       "name": "Spring Promotion",
-      "location": ['sullia','puttur'],
+      "location": {
+        'value' : [
+          "sullia","puttur"
+        ]
+      },
       "status": "Scheduled",
       "ctr": 1.9,
       "start date": "2023-07-10"

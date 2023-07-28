@@ -5,7 +5,7 @@ export interface CampaignInterface {
   category?: string;
   offer?: string;
   comment?: string;
-  location?: string[];
+  location?: {};
   status: string;
   ctr: number;
   'start date': string;

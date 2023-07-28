@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SharedDataService } from 'src/app/data.service';
+import { SharedDataService } from 'src/app/services/data.service';
 import { CampaignInterface } from '../types/campaign.interface';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-campaign-info',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './campaign-info.component.html',
   styleUrls: ['./campaign-info.component.scss'],
 })
 export class CampaignInfoComponent implements OnInit {
+  showAlert = false;
   itemId!: string;
   campaigns!: CampaignInterface[];
   deleted: boolean = false;

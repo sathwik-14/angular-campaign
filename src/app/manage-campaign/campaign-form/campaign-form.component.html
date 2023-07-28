@@ -5,7 +5,7 @@
     <i
       class="bi me-2"
       [ngClass]="
-        showFirstPage ? ' bi-1-circle-fill text-primary' : ' bi-1-circle'
+        showFirstPage ? ' bi-1-circle-fill text-theme-primary' : ' bi-1-circle'
       "
     ></i>
     Campaign Detail
@@ -15,7 +15,7 @@
     <i
       class="bi me-2"
       [ngClass]="
-        showSecondPage ? 'text-primary bi-2-circle-fill' : 'bi-2-circle'
+        showSecondPage ? 'text-theme-primary bi-2-circle-fill' : 'bi-2-circle'
       "
     ></i>
     Location Detail
@@ -25,7 +25,7 @@
     <i
       class="bi me-2"
       [ngClass]="
-        showThirdPage ? 'text-primary bi-3-circle-fill' : 'bi-3-circle'
+        showThirdPage ? 'text-theme-primary bi-3-circle-fill' : 'bi-3-circle'
       "
     ></i>
     Audience
@@ -35,13 +35,14 @@
     <i
       class="bi me-2"
       [ngClass]="
-        showFourthPage ? 'text-primary bi-4-circle-fill' : 'bi-4-circle'
+        showFourthPage ? 'text-theme-primary bi-4-circle-fill' : 'bi-4-circle'
       "
     ></i>
     Campaign Summary
   </div>
 </div>
 
+<form [formGroup]="campaignForm" (ngSubmit)="submitForm()">
 <div
   class="form-container d-flex flex-column container p-4 mt-lg-3"
   *ngIf="showFirstPage"
@@ -52,14 +53,13 @@
     >
     <input
       type="text"
-      [formControl]="name"
+      formControlName="name"
       (input)="updateCampaignName()"
       id="name"
       class="form-control shadow-none"
-      value="{{ name }}"
-      placeholder="name"
+      placeholder="Name"
     />
-    <span class="text-danger mt-2" *ngIf="nameAlert">Enter campaign name</span>
+    <span class="text-danger mt-2" *ngIf="name && name.invalid && name.touched">Enter Campaign Name</span>
   </div>
 
   <div class="mb-3">
@@ -68,14 +68,13 @@
     >
     <input
       type="text"
-      [formControl]="objective"
-      placeholder="objective"
-      value="{{ objective }}"
+      formControlName="objective"
+      placeholder="Objective"
       class="form-control shadow-none"
       id="objective"
     />
-    <span class="text-danger mt-2" *ngIf="objectiveAlert"
-      >Enter campaign objective</span
+    <span class="text-danger mt-2" *ngIf="objective && objective.invalid && objective.touched"
+      >Enter Campaign Objective</span
     >
   </div>
 
@@ -83,7 +82,7 @@
     <div class="mb-3 col">
       <label for="category" class="">Campaign Category </label>
 
-      <select class="form-select shadow-none" [formControl]="categorySelect">
+      <select class="form-select shadow-none" formControlName="categorySelect">
         <option value="select" selected>select</option>
         <option *ngFor="let option of categories" [ngValue]="option">
           {{ option }}
@@ -94,7 +93,7 @@
     <div class="mb-3 col">
       <label for="category" class="">Offer Type </label>
 
-      <select class="form-select shadow-none" [formControl]="offerSelect">
+      <select class="form-select shadow-none" formControlName="offerSelect">
         <option value="select" selected>select</option>
         <option *ngFor="let option of categories" [ngValue]="option">
           {{ option }}
@@ -111,13 +110,13 @@
       class="form-control shadow-none"
       id="exampleFormControlTextarea1"
       rows="3"
-      [formControl]="comments"
-      placeholder="comments..."
+      formControlName="comments"
+      placeholder="Comments..."
     ></textarea>
   </div>
-  <div class="btn btn-md ms-auto btn-primary-theme" (click)="secondPage()">
+  <button class="btn btn-md ms-auto btn-primary-theme" [disabled]="name!.invalid || objective!.invalid" (click)="secondPage()">
     Next
-  </div>
+  </button>
 </div>
 
 <div
@@ -125,7 +124,8 @@
   *ngIf="showSecondPage"
 >
   <div class="d-flex flex-column flex-lg-row">
-    <div class="d-flex flex-column gap-2">
+    
+    <div class="d-flex flex-column gap-2" formArrayName = "locations" >
       <label for="category"
         >Location Detail (Optional) &nbsp;<i
           class="bi bi-info-circle-fill text-muted"
@@ -137,8 +137,8 @@
         class="form-control"
         name="location"
         placeholder="Add Location"
-        [formControl]="location"
-        (change)="addLocation($event)"
+        (change)="addLocation(place)"
+        #place
       />
 
       <div class="mb-3 d-flex">
@@ -159,32 +159,32 @@
         <ng-container *ngIf="locations.length > 0">
           <div class="places">
             <div
-              class="d-flex gap-1 align-items-center flex-item"
-              *ngFor="let place of locations; let i = index"
+              class="d-flex mb-2 fs-6 align-items-center justify-content-center gap-2"
+              *ngFor="let place of locations.controls; let i = index"
             >
-              <div>{{ i + 1 }}</div>
-              <div class="bg-light flex-grow-1 d-flex align-items-center">
+              <div class="">{{ i + 1 }}</div>
+              <div class="bg-light flex-grow-1 d-flex">
                 <input
                   #place
                   type="text"
-                  class="bg-light list-name"
+                  class="bg-light flex-grow-1 ps-1 list-name"
                   [ngClass]="{ 'edit-mode': isEditable(i) }"
                   (blur)="toggleEditable(null)"
-                  [value]="place"
+                  [value]="place.value"
                   [readonly]="!isEditable(i)"
                 />
                 <i
-                  class="bi bi-pencil-square ms-auto"
+                  class="bi bi-pencil-square pe-1"
                   (click)="toggleEditable(i)"
                   *ngIf="!isEditable(i)"
                 ></i>
                 <i
-                  class="bi bi-check2 ms-auto"
+                  class="bi bi-check2 pe-1"
                   *ngIf="isEditable(i)"
                   (click)="toggleEditable(i)"
                 ></i>
               </div>
-              <div class="ms-auto">
+              <div class="">
                 <i class="bi bi-trash" (click)="deleteLocation(i)"></i>
               </div>
             </div>
@@ -408,26 +408,28 @@
 >
   <div class="d-flex flex-column gap-3 mb-3">
     <div class="fs-7 text-muted">
-      Name : <span class="text-dark">{{ name.value }}</span>
+      Name : <span class="text-dark">{{ campaignForm.value.name }}</span>
     </div>
     <div class="fs-7 text-muted">
-      Objective : <span class="text-dark">{{ objective.value }}</span>
+      Objective : <span class="text-dark">{{ campaignForm.value.objective }}</span>
     </div>
     <div class="fs-7 text-muted">
       Category :
-      <span class="text-dark badge bg-info">{{ categorySelect.value }}</span>
+      <span class="text-dark badge bg-info">{{ campaignForm.value.categorySelect }}</span>
     </div>
     <div class="fs-7 text-muted">
       Offer Type :
-      <span class="text-dark badge bg-info">{{ offerSelect.value }}</span>
+      <span class="text-dark badge bg-info">{{ campaignForm.value.offerSelect }}</span>
     </div>
     <div class="fs-7 text-muted">
-      Comments : <span class="text-dark">{{ comments.value }}</span>
+      Comments : <span class="text-dark">{{ campaignForm.value.comments }}</span>
     </div>
     <div class="fs-7 text-muted">
       Locations :
-      <span Class="text-dark mx-1" *ngFor="let location of locations"
-        >{{ location }},</span
+      <span Class="text-dark mx-1" *ngFor="let location of locations.controls;let i=index "
+        >{{ location.value }}
+        <ng-container *ngIf="i < locations.controls.length - 1">,</ng-container>
+        </span
       >
     </div>
     <div class="text-danger">
@@ -485,3 +487,4 @@
     </div>
   </div>
 </div>
+</form>
