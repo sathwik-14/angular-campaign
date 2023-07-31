@@ -27,10 +27,7 @@ $breakpoint-tablet: 769px;
   i {
     font-size: 2rem;
   }
-  //   .bi-arrow-right{
-  //     position: fixed;
-  //     bottom: 0;
-  // }
+
   .active {
     background-color: #f4f3f4 !important;
     color: #478efc !important;
@@ -58,8 +55,8 @@ $breakpoint-tablet: 769px;
     }
 
     a {
-      color: inherit; /* Remove default link color */
-      text-decoration: none; /* Remove underline */
+      color: inherit; 
+      text-decoration: none; 
       transition: all 0.3s ease-in-out;
       &:hover {
         cursor: pointer;

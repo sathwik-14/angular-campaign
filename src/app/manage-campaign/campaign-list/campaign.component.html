@@ -1,24 +1,16 @@
-<div class="container-lg-fluid my-2 my-lg-4">
-  <div class="header d-flex justify-content-between">
-    <p class="header-title h2 text-theme-primary" >Manage Campaigns</p>
+<section class="container-lg-fluid my-2 my-lg-4">
+  <header class="header d-flex justify-content-between">
+    <h2 class="header-title text-theme-primary">Manage Campaigns</h2>
     <div class="dropdown">
-      <button
-        class="btn btn-outline-secondary"
-        type="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
+      <button class="btn btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Abcd Efgh
       </button>
     </div>
-  </div>
-  <div class="list-campaign" *ngIf="!showForm">
+  </header>
+  <section class="list-campaign" *ngIf="!showForm">
     <div class="fs-7 text-muted">Manage Campaign</div>
-
-    <div class="hero-container p-4 mt-2">
-      <div class="btn btn-primary-theme my-1 my-lg-3" (click)="toggleForm()">
-        Create Campaign
-      </div>
+    <div class="hero-container p-4 mt-2" [ngClass]="showForm ? 'animate__animated animate__fadeOutLeft' : 'animate__animated animate__fadeInUp'">
+      <div class="btn btn-primary-theme my-1 my-lg-3" (click)="toggleForm()">Create Campaign</div>
       <div class="table-container">
         <table class="table">
           <thead>
@@ -29,66 +21,38 @@
               <th scope="col">CTR</th>
               <th scope="col">
                 Start Date &nbsp;
-                <i
-                  class="bi bi-chevron-up"
-                  (click)="sortDate()"
-                  *ngIf="ascOrder"
-                ></i>
-                <i
-                  class="bi bi-chevron-down"
-                  (click)="sortDate()"
-                  *ngIf="!ascOrder"
-                ></i>
+                <i class="bi bi-chevron-up" (click)="sortDate()" *ngIf="ascOrder"></i>
+                <i class="bi bi-chevron-down" (click)="sortDate()" *ngIf="!ascOrder"></i>
               </th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let data of campaignData">
-              <td class="">{{ data["id"] }}</td>
-              <td class="" class="campaign-name">
-                <a [routerLink]="['/campaign', data['id']]">
-                  {{ data["name"] }}
-                </a>
+              <td>{{ data["id"] }}</td>
+              <td class="campaign-name">
+                <a [routerLink]="['/campaign', data['id']]">{{ data["name"] }}</a>
               </td>
               <td class="block" *ngIf="data['status'] == 'Scheduled'">
-                <span class="blue-badge border-round text-center p-1">{{
-                  data["status"]
-                }}</span>
+                <span class="blue-badge border-round text-center p-1">{{ data["status"] }}</span>
               </td>
               <td class="block" *ngIf="data['status'] == 'Completed'">
-                <span class="green-badge border-round text-center p-1">{{
-                  data["status"]
-                }}</span>
+                <span class="green-badge border-round text-center p-1">{{ data["status"] }}</span>
               </td>
               <td class="block" *ngIf="data['status'] == 'Draft'">
-                <span class="grey-badge border-round text-center p-1">{{
-                  data["status"]
-                }}</span>
+                <span class="grey-badge border-round text-center p-1">{{ data["status"] }}</span>
               </td>
-
-              <td class="">{{ data["ctr"] }}%</td>
-              <td class="">
-                {{ data["start date"] | date : "dd MMMM (yyyy)" }}
-              </td>
+              <td>{{ data["ctr"] }}%</td>
+              <td>{{ data["start date"] | date : "dd MMMM (yyyy)" }}</td>
               <td>
                 <div class="dropdown">
-                  <button
-                    class="btn btn-sm btn-outline-secondary dropdown-toggle"
-                    type="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
+                  <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Action
                   </button>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
                   </ul>
                 </div>
               </td>
@@ -97,23 +61,14 @@
         </table>
       </div>
     </div>
-  </div>
-
-  <div class="list-campaign" *ngIf="showForm">
+  </section>
+  <section class="list-campaign" *ngIf="showForm">
     <div class="">
-      <span class="fs-7 text-muted hover" (click)="toggleForm()"
-        >Manage Campaign</span
-      >&nbsp;>&nbsp;
+      <span class="fs-7 text-muted hover" (click)="toggleForm()">Manage Campaign</span>&nbsp;>&nbsp;
       <span class="fs-7 text-muted">{{ newCampaignName }}</span>
     </div>
-
     <div class="hero-container p-2 p-lg-4 mt-2 mt-lg-4">
-      <app-campaign-form
-        [(campaignName)]="newCampaignName"
-        [showForm]="showForm"
-        (toggleForm)="toggleForm()"
-      >
-      </app-campaign-form>
+      <app-campaign-form [(campaignName)]="newCampaignName" [showForm]="showForm" (toggleForm)="toggleForm()"></app-campaign-form>
     </div>
-  </div>
-</div>
+  </section>
+</section>

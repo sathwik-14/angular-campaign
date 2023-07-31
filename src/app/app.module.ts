@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { CampaignModule } from './manage-campaign/campaign.module';
+import { CampaignModule } from './manage-campaign/manage-campaign.module';
 
 @NgModule({
   declarations: [AppComponent,

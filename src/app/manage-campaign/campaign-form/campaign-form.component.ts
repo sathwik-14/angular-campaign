@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Validators,FormBuilder, FormArray } from '@angular/forms';
+import { Validators, FormBuilder, FormArray } from '@angular/forms';
 import { SharedDataService } from 'src/app/services/data.service';
 
 @Component({
@@ -8,17 +8,31 @@ import { SharedDataService } from 'src/app/services/data.service';
   styleUrls: ['./campaign-form.component.scss'],
 })
 export class CampaignFormComponent {
-  constructor(private dataservice: SharedDataService,private fb:FormBuilder) {}
+  constructor(
+    private dataservice: SharedDataService,
+    private fb: FormBuilder
+  ) {}
 
   campaignForm = this.fb.group({
-    name: ['',Validators.required],
-    objective: ['',Validators.required],
+    name: ['', Validators.required],
+    objective: ['', Validators.required],
     categorySelect: ['select'],
     offerSelect: ['select'],
     comments: [''],
-    locations:this.fb.array([
-    ]),
+    locations: this.fb.array([]),
   });
+
+  get locations() {
+    return this.campaignForm.get('locations') as FormArray;
+  }
+
+  get name() {
+    return this.campaignForm.get('name');
+  }
+
+  get objective() {
+    return this.campaignForm.get('objective');
+  }
 
   @Input() showForm!: boolean;
   @Input() campaignName: any;
@@ -35,40 +49,22 @@ export class CampaignFormComponent {
   browse: boolean = false;
   application: boolean = false;
 
-  toggleFirstPage() {
-    this.showFirstPage = !this.showFirstPage;
+  currentPageIndex = 0;
+
+  nextPage() {
+    if (this.currentPageIndex < 3) {
+      this.currentPageIndex++;
+    }
   }
-  toggleSecondPage() {
-    this.showSecondPage = !this.showSecondPage;
-  }
-  toggleThirdPage() {
-    this.showThirdPage = !this.showThirdPage;
-  }
-  toggleFourthPage() {
-    this.showFourthPage = !this.showFourthPage;
+
+  prevPage() {
+    if (this.currentPageIndex > 0) {
+      this.currentPageIndex--;
+    }
   }
 
   toggleBrowse() {
     this.browse = !this.browse;
-  }
-
-
-
-  secondPage() {
-  
-      this.toggleFirstPage();
-      this.toggleSecondPage();
-    
-  }
-
-  thirdPage() {
-    this.toggleThirdPage();
-    this.toggleSecondPage();
-  }
-
-  fourthPage() {
-    this.toggleThirdPage();
-    this.toggleFourthPage();
   }
 
   toggleCategory() {
@@ -97,62 +93,44 @@ export class CampaignFormComponent {
 
   addLocation(place: any) {
     this.locations.push(this.fb.control(place.value));
-    place.value = ''
+    place.value = '';
   }
-
-  get locations() {
-    return this.campaignForm.get('locations') as FormArray;
-  }
-
-  get name() {
-    return this.campaignForm.get('name');
-  }
-
-  get objective() {
-    return this.campaignForm.get('objective');
-  }
-
 
   onCategoryChange(event: any) {
     const selectedValue = event.target.value;
-    this.campaignForm.value.categorySelect=selectedValue.split(':')[1];
-    // console.log(this.categorySelect.value);
+    this.campaignForm.value.categorySelect = selectedValue.split(':')[1];
   }
 
   onOfferChange(event: any) {
     const selectedValue = event.target.value;
     this.campaignForm.value.offerSelect = selectedValue.split(':')[1];
-    // console.log(this.offerSelect.value);
   }
 
   deleteLocation(i: any) {
-    this.locations.removeAt(i)
+    this.locations.removeAt(i);
   }
 
   submitted: boolean = false;
 
   submitForm() {
     this.submitted = true;
-    if(this.campaignForm.valid){
+    if (this.campaignForm.valid) {
       setTimeout(() => {
-          this.newCampaign = {
-            name: this.campaignForm.value.name,
-            objective: this.campaignForm.value.objective,
-            comment: this.campaignForm.value.comments,
-            category: this.campaignForm.value.categorySelect,
-            offer: this.campaignForm.value.offerSelect,
-            location: this.locations,
-          };
-          this.dataservice.addData(this.newCampaign);
-          this.submitted = false;
-          this.showForm = false;
-          this.toggleForm.emit(this.showForm);
+        this.newCampaign = {
+          name: this.campaignForm.value.name,
+          objective: this.campaignForm.value.objective,
+          comment: this.campaignForm.value.comments,
+          category: this.campaignForm.value.categorySelect,
+          offer: this.campaignForm.value.offerSelect,
+          location: this.locations,
+        };
+        this.dataservice.addData(this.newCampaign);
+        this.submitted = false;
+        this.showForm = false;
+        this.toggleForm.emit(this.showForm);
       }, 1000);
-    }
-    else {
+    } else {
       this.submitted = false;
-
     }
-    
   }
 }

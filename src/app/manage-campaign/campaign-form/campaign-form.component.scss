@@ -1,140 +1,143 @@
 $breakpoint-phone: 481px;
 $breakpoint-tablet: 769px;
 
-.bi-trash {
-  &:hover {
-    color: #b71111;
-    cursor: pointer;
-  }
-}
-
-.btn-primary-theme {
-  background-color: #478efc;
-  color: #f4f3f4;
-}
-
-.btn-secondary-theme {
-  background-color: #c5c3c5;
-  color: black;
-}
-
-.btn-outline-primary-theme {
-  border: #478efc 0.1px solid;
-  color: #478efc;
-}
-
-.hero-container {
-  width: 100%;
-  background-color: white;
-  border-radius: 1rem;
-  box-shadow: #b7cdfd 0px 5px 30px -10px;
-
-  .d-block {
-    width: 5vw;
-  }
-
-  .campaign-name {
-    &:hover {
-      cursor: pointer;
-      text-decoration: underline;
-    }
-  }
-
-  .border-round {
-    border-radius: 1rem;
-  }
-}
-
-.hover {
-  &:hover {
-    cursor: pointer;
-    color: #478efc !important;
-  }
-}
-
-.filler {
-  height: 0.2vh;
-  background-color: rgb(182, 182, 182);
-  width: 8%;
-}
-
-.form-container {
-  width: 100%;
-  background-color: #f4f3f4;
-  border-radius: 1rem;
-  label {
-    font-size: 1rem;
-  }
-}
-
-.places {
-  max-height: 120px;
-  overflow-y: auto;
-}
-
-.bi-check2,
-.bi-pencil-square {
-  &:hover {
-    cursor: pointer;
-    color: #478efc !important;
-  }
-}
-
-.list-name {
-  border: none;
-  outline: none;
-}
-
 .text-theme-primary {
   color: #478efc;
 }
 
-.edit-mode {
-  border-bottom: 1px solid #007bff;
+.stepper {
+  .filler {
+    height: 0.2vh;
+    background-color: rgb(182, 182, 182);
+    width: 8%;
+  }
 }
 
-.browse-container {
-  position: absolute;
-  // width: 70vw;
-  margin-top: 80px;
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 10px;
+form {
+  .hero-container {
+    width: 100%;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: #b7cdfd 0px 5px 30px -10px;
 
-  .industry,
-  .category {
-    // flex: 1;
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .industry:hover {
-    .category {
-      display: block;
-    }
-  }
-
-  .browse-category {
-    .heading {
-      padding: 1rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    .d-block {
+      width: 5vw;
     }
 
-    .form-check {
-      padding-right: 1rem;
-      margin-left: 1rem;
+    .campaign-name {
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+
+    .border-round {
+      border-radius: 1rem;
     }
   }
-
-  .option {
-    padding: 0.5rem 1rem;
+  .bi-trash {
     &:hover {
-      background-color: rgba(#478efc, 0.3);
+      color: #b71111;
       cursor: pointer;
     }
   }
 
-  .active {
-    background-color: rgba(#478efc, 0.3);
+  .btn-primary-theme {
+    background-color: #478efc;
+    color: #f4f3f4;
+  }
+
+  .btn-secondary-theme {
+    background-color: #c5c3c5;
+    color: black;
+  }
+
+  .btn-outline-primary-theme {
+    border: #478efc 0.1px solid;
     color: #478efc;
+  }
+
+  .browse-container {
+    position: absolute;
+    // width: 70vw;
+    margin-top: 80px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 10px 10px;
+
+    .industry,
+    .category {
+      // flex: 1;
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .industry:hover {
+      .category {
+        display: block;
+      }
+    }
+
+    .browse-category {
+      .heading {
+        padding: 1rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .form-check {
+        padding-right: 1rem;
+        margin-left: 1rem;
+      }
+    }
+
+    .option {
+      padding: 0.5rem 1rem;
+      &:hover {
+        background-color: rgba(#478efc, 0.3);
+        cursor: pointer;
+      }
+    }
+
+    .active {
+      background-color: rgba(#478efc, 0.3);
+      color: #478efc;
+    }
+  }
+
+  .hover {
+    &:hover {
+      cursor: pointer;
+      color: #478efc !important;
+    }
+  }
+
+  .form-container {
+    width: 100%;
+    background-color: #f4f3f4;
+    border-radius: 1rem;
+    label {
+      font-size: 1rem;
+    }
+  }
+
+  .places {
+    max-height: 120px;
+    overflow-y: auto;
+  }
+
+  .bi-check2,
+  .bi-pencil-square {
+    &:hover {
+      cursor: pointer;
+      color: #478efc !important;
+    }
+  }
+
+  .list-name {
+    border: none;
+    outline: none;
+  }
+
+  .edit-mode {
+    border-bottom: 1px solid #007bff;
   }
 }
 
