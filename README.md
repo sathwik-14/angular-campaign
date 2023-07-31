@@ -1,4 +1,4 @@
-[ANGULAR CAMPAIGN WEBSITE](https://angular-campaign.netlify.com)
+[ANGULAR CAMPAIGN WEBSITE](https://angular-campaign.netlify.app)
 # CampaignAngular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
